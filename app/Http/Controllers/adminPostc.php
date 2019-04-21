@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\post;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -17,7 +18,11 @@ class adminPostc extends Controller
     {
         //
 
-        return view ('admin.posts.index');
+        $posts=post::all();
+
+
+
+        return view ('admin.posts.index',compact('posts'));
     }
 
     /**

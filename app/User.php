@@ -67,4 +67,15 @@ return $this->belongsTo('App\photo','photo_id');
 
         }
 
+
+
+        public function posts(){
+
+
+
+        return $this->hasMany('App/post');
+
+
+        }
+
 }
