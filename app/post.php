@@ -4,9 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+
+
+
 class post extends Model
 {
     //
+    protected $table = 'posts';
 
     protected $fillable=[
         'id',
@@ -24,7 +28,7 @@ class post extends Model
 
 
 
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\User','user_id');
 
 
     }
@@ -32,7 +36,7 @@ class post extends Model
 
 
 
-        return $this->belongsTo('App\photo');
+        return $this->belongsTo('App\photo','photo_id');
 
 
     }
@@ -40,7 +44,7 @@ class post extends Model
 
 
 
-        return $this->belongsTo('App\category');
+        return $this->belongsTo('App\category','category_id');
 
 
     }
