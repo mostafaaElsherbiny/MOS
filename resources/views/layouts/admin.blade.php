@@ -163,12 +163,10 @@
                         <a href="#"><i class="fa fa-wrench fa-fw"></i>Categories<span class="fa arrow fa-arrow-alt-circle-left"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="/categories">All Categories</a>
+                                <a href="{{route('admin.categories.index')}}">All Categories</a>
                             </li>
 
-                            <li>
-                                <a href="/categories/create">Create Category</a>
-                            </li>
+
 
                         </ul>
                         <!-- /.nav-second-level -->

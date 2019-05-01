@@ -5,11 +5,11 @@
 @section('content')
 
 
-    {{--@if(Session::has('delete_user'))--}}
-        {{--<p class="alert-info delete-message">{{Session('delete_user')}}</p>--}}
+    @if(Session::has('delete_post'))
+        <p class="alert-info delete-message">{{Session('delete_post')}}</p>
 
 
-    {{--@endif--}}
+    @endif
 
 
     <h3>Posts</h3>
@@ -31,19 +31,19 @@
         <tbody>
         @if($posts)
 
-            @foreach($posts as $post )
+            @foreach($posts as $post)
 
                 <tr>
                     <td>{{$post->id}}</td>
                     <td>{{$post->user->name}}</td>
                     <td><img  height="50" src="{{$post->photo?$post->photo->file:'there/' }}" alt=""></td>
 
-                    <td>{{$post->category_id}}</td>
+                    <td>{{$post->category?$post->category->name:'Uncategorized'}}</td>
 
 
                     <td><a href="{{route('admin.posts.edit',$post->id)}}">{{$post->title}}</a></td>
 
-                    <td>{{$post->body}}</td>
+                    <td>{{str_limit($post->body,20)}}</td>
 
                     <td>{{$post->created_at->diffForHumans()}}</td>
                     <td>{{$post->updated_at->diffForHumans()}}</td>

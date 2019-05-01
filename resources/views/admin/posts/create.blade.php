@@ -14,9 +14,15 @@
             <input type="text" name="title" id="name" class="form-control" placeholder="type your name" >
         </div>
   <div class="form-group">
-            <label for="name">category</label>
-      <select name="category_id" id="" class="med form-control ">
-          <option value="0">option</option>
+            <label for="category">category</label>
+      <select name="category_id" id="category" class="med form-control ">
+          <option value="">...</option>
+          @if($categories)
+          @foreach($categories as $category)
+                  <option value="{{$category->id}}">{{$category->name}}</option>
+
+              @endforeach
+              @endif
       </select>
 
         </div>
@@ -39,8 +45,8 @@
 
 
         <div class="form-group">
-            <label for="name">Description</label>
-                <textarea name="body" id="name" class="form-control" placeholder="type your name" >
+            <label for="body">Description</label>
+                <textarea name="body" id="body" class="form-control" placeholder="type your name" >
 
                 </textarea>
         </div>

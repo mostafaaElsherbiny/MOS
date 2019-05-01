@@ -15,7 +15,8 @@
 
         </div>
 
-        <div class="col-md-9"> <form method="POST" action="/admin/users/{{$users->id}}" enctype="multipart/form-data">
+        <div class="col-md-9">
+            <form method="POST" action="/admin/users/{{$users->id}}" enctype="multipart/form-data">
                 {{csrf_field()}}
 
                 <input type="hidden" name="_method" value="PATCH">
