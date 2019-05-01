@@ -31,6 +31,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::resource('admin/users', 'adminUsersC');
     Route::resource('admin/posts', 'adminPostC');
     Route::resource('admin/categories', 'adminCatC');
+    Route::resource('admin/media', 'adminMediaC');
 
 });
 
