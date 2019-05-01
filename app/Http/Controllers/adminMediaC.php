@@ -28,6 +28,34 @@ public function create(){
 
 
     }
+    public function store(Request $request)
+    {
+        //
+
+
+        $file=$request->file('file');
+
+            $name=time(). $file->getClientOriginalName();
+
+            $file->move('imges',$name);
+
+            photo::create(['file'=>$name]);
+
+
+
+    }
+
+
+    public function destroy($id){
+
+$photo=photo::find($id);
+        unlink(public_path() . $photo->file);
+
+$photo->DELETE();
+
+return redirect('/admin/media');
+
+    }
 
 
 
