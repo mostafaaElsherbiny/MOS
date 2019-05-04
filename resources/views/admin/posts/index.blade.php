@@ -23,6 +23,7 @@
             <th>image</th>
             <th>category</th>
             <th>title</th>
+            <th></th>
             <th>body</th>
             <th>created at</th>
             <th>updated at</th>
@@ -42,7 +43,13 @@
 
 
                     <td><a href="{{route('admin.posts.edit',$post->id)}}">{{$post->title}}</a></td>
-
+                    <td>
+            <a href="{{route('homePost',$post->id)}}">view post</a>
+            </td>
+                    <td>
+            <a href="{{route('admin.comments.show',$post->id)}}">view comments</a>
+            </td>
+            
                     <td>{{str_limit($post->body,20)}}</td>
 
                     <td>{{$post->created_at->diffForHumans()}}</td>

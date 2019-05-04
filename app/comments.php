@@ -28,7 +28,16 @@ class comments extends Model
 
 
 
-        return $this->hasMany('App/commentsReplies');
+        return $this->hasMany('App\commentsReplies');
+    }
+
+
+
+    public function post(){
+
+
+
+        return $this->belongsTo('App\post','post_id');
     }
 
 

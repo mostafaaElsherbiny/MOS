@@ -12,18 +12,19 @@ class Admin
      * @return mixed
      */
     public function handle($request, Closure $next)
-    {
+    {   
+
         if(Auth::check()){
 
             if(Auth::user()->isAdmin()){
-                return $next($request);
+                return $next($request);        
             }
             // the user is not administrator and is not active
-           return redirect('/home');
+            return redirect('/home');
         }
-
+        
         return redirect('/');
-
+        
         // return Auth::user()->isAdmin();
     }
 }

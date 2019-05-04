@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\post;
+
+use App\comments;
 
 use App\Http\Requests;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class postCommentsC extends Controller
 {
@@ -17,8 +21,10 @@ class postCommentsC extends Controller
     {
         //
 
+        $comments=comments::all();
 
-        return view('admin.comments.index');
+
+        return view('admin.comments.index',compact('comments'));
     }
 
     /**
@@ -40,6 +46,29 @@ class postCommentsC extends Controller
     public function store(Request $request)
     {
         //
+
+        $user=Auth::user();
+
+$date=[
+
+    'post_id'=>$request->post_id,
+    
+    'author'=>$user->name,
+    'email'=>$user->email,
+    'body'=>$request->body,
+    'photo'=>$user->photo->file
+
+
+]; 
+       
+    comments::create($date);
+
+$request->session()->flash('comment_message','the manager will see your comment and see if he can active it');
+
+
+return  redirect()->back();
+    
+
     }
 
     /**
@@ -51,6 +80,15 @@ class postCommentsC extends Controller
     public function show($id)
     {
         //
+
+        $post=post::findOrFail($id);
+
+        $comments=$post->comments;
+
+        return view('admin.comments.show',compact('comments'));
+
+
+
     }
 
     /**
@@ -74,6 +112,11 @@ class postCommentsC extends Controller
     public function update(Request $request, $id)
     {
         //
+
+
+        comments::findOrFail($id)->update($request->all());
+        
+        return redirect('/admin/comments');
     }
 
     /**
@@ -85,5 +128,11 @@ class postCommentsC extends Controller
     public function destroy($id)
     {
         //
+comments::findOrFail($id)->delete();
+
+
+return redirect()->back();
+
+
     }
 }

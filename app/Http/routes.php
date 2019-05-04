@@ -22,6 +22,7 @@ Route::auth();
 
 Route::get('/home', 'HomeController@index');
 
+Route::get('/post/{id}',['as'=>'homePost','uses'=>'adminPostC@post']);
 
 
 

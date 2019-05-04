@@ -49,13 +49,18 @@ return $this->belongsTo('App\photo','photo_id');
 
     public function setPasswordAttribute ($password){
         if(!empty($password)){
-            return $this->attributes['password'] = bcrypt($password);
+            return $this->attributes['password'] = bcrypt($password);    
         }
     }
-    public function isAdmin(){
-        if ($this->role->name == 'admin' && $this->is_active==1) {
-            return true ;
+
+    public function isAdmin (){
+
+        // return $this->role->name;
+        if($this->role->name == 'admin' && $this->is_active == 1){
+
+            return true;
         }
+
         return false;
     }
 

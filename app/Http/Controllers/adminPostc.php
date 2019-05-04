@@ -177,5 +177,16 @@ $categories=category::all();
     }
 
 
+public function post($id){
+
+$post=post::findOrFail($id);
+
+
+
+return view('post',compact('post'));
+
+}
+
+
 
 }
