@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 
+use App\comments;
 use App\Http\Requests;
 use Illuminate\Http\Request;
+use App\commentsReplies;
 
 class commentsRepliesC extends Controller
 {
@@ -30,6 +32,26 @@ class commentsRepliesC extends Controller
 
         
     }
+    public function createReply (Request $request){
+
+        $user = Auth::user();
+
+        $data = [
+
+            'comment_id'=>$request->comment_id,
+            'author'=>$user->name,
+            'photo'=>$user->photo->file,
+            'email'=>$user->email,
+            'body'=>$request->body
+        ];
+
+        $request->session()->flash('reply_message','Your reply has been submitted and is waiting for moderation.');
+
+        CommentReply::create($data);
+        
+        return redirect()->back();
+    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -51,6 +73,10 @@ class commentsRepliesC extends Controller
     public function show($id)
     {
         //
+        $comment = comments::findOrFail($id);
+        $replies = $comment->replies;
+        // return $replies;
+        return view('admin.comments.replies.show',compact('replies'));
     }
 
     /**
@@ -74,6 +100,9 @@ class commentsRepliesC extends Controller
     public function update(Request $request, $id)
     {
         //
+        commentsReplies::findOrFail($id)->update($request->all());
+
+        return redirect()->back();
     }
 
     /**
@@ -85,5 +114,8 @@ class commentsRepliesC extends Controller
     public function destroy($id)
     {
         //
+        commentsReplies::findOrFail($id)->delete();
+
+        return redirect()->back();
     }
 }

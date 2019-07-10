@@ -23,7 +23,8 @@
             <th>image</th>
             <th>category</th>
             <th>title</th>
-            <th></th>
+            <th>post</th>
+            <th>comment</th>
             <th>body</th>
             <th>created at</th>
             <th>updated at</th>

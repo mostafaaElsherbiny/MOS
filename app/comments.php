@@ -28,7 +28,7 @@ class comments extends Model
 
 
 
-        return $this->hasMany('App\commentsReplies');
+        return $this->hasMany('App\commentsReplies','comment_id');
     }
 
 

@@ -24,7 +24,7 @@ class commentsReplies extends Model
 
 
 
-        return $this->belongsTo('App/comments','comment_id');
+        return $this->belongsTo('App\comments','comment_id');
     }
 
 

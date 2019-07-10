@@ -180,10 +180,11 @@ $categories=category::all();
 public function post($id){
 
 $post=post::findOrFail($id);
+$comments=$post->comments;
 
 
 
-return view('post',compact('post'));
+return view('post',compact('post','comments'));
 
 }
 

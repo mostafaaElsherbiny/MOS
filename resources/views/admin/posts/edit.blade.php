@@ -34,7 +34,11 @@
                         @if($categories)
                             @foreach($categories as $category)
 
-                                <option value="{{$category->id}}"   @if($category->id==$posts->category_id)  {{'selected'}} @endif  >{{$category->name}}</option>
+                                <option value="{{$category->id}}"
+                                     @if($category->id==$posts->category_id)  {{'selected'}} @endif>
+                                     {{$category->name}}
+                                    
+                                    </option>
 
                             @endforeach
                         @endif

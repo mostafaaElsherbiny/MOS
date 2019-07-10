@@ -166,7 +166,9 @@
 
 <!-- jQuery -->
 
-<script src="{{asset('js/libs.js')}}"></script>
+
+<script src="{{asset('js/libs/jquery.js')}}"></script>
+
 
 
 @yield('scripts')
