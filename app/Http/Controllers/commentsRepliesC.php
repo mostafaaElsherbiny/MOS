@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 
 use App\comments;
 use App\Http\Requests;
-use Illuminate\Http\Request;
 use App\commentsReplies;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class commentsRepliesC extends Controller
 {
@@ -47,7 +48,7 @@ class commentsRepliesC extends Controller
 
         $request->session()->flash('reply_message','Your reply has been submitted and is waiting for moderation.');
 
-        CommentReply::create($data);
+        CommentsReplies::create($data);
         
         return redirect()->back();
     }

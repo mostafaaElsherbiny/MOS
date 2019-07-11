@@ -22,7 +22,6 @@ Route::auth();
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('/post/{id}',['as'=>'homePost','uses'=>'adminPostC@post']);
 Route::group(['middleware'=>'auth'], function(){
 
 	Route::post('/comment/replies', 'CommentsRepliesC@createReply');

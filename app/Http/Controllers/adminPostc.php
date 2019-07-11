@@ -136,7 +136,7 @@ $categories=category::all();
             $input['photo_id'] = $photo->id;
 
         }
-        $user->posts()->findOrFail($id)->first()->update($input);
+        $user->posts()->findOrFail($id)->update($input);
 
 
 

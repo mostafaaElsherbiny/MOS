@@ -96,13 +96,15 @@
                             <button class="toggle-reply btn btn-primary pull-right">Reply</button>
                             <div class="comment-reply ">
                                     <div class="col-md-12"> 
-                                    <form action="comment/replies" method="POST">
+                                    <form action="/comment/replies" method="POST">
+                                     
                                     <input type="hidden" name="comment_id" value="{{$comment->id}}">
                             
                                     <div class='form-group col-sm-6'>
 
                                         <textarea class="form-control" name="body"  cols="30" rows="1"></textarea>
                                     </div>
+                                    {{csrf_field()}}
 
                                     <div class='form-group'>
                                         <input class="btn btn-primary" type="submit" value="supmit reply">

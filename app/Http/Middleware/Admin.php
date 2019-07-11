@@ -20,7 +20,7 @@ class Admin
                 return $next($request);        
             }
             // the user is not administrator and is not active
-            return redirect('/home');
+            return redirect('/');
         }
         
         return redirect('/');
